@@ -1,31 +1,59 @@
 <!DOCTYPE html>
-<html data-ng-app="app" data-ng-controller="AppController">
+<html data-ng-app="appAngularJS" data-ng-controller="AppController" lang="en">
 <head>
 	<meta charset="utf-8"/>
 	<title>Ads - My AngularJS App</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="/app/css/bootstrap.css" />
 	<link rel="stylesheet" href="/app/css/bootstrap-theme.css" />
 	<link rel="stylesheet" href="/app/css/app.css" />
 </head>
 <body>
 <header id="header">
-
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/#/">Ads - My AngularJS App</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/#/">Home</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Login</a></li>
+					<li><a href="#">Register</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </header>
 
-<div id="app-content">
-	<div class="col-md-2 sidebar">
-		<div data-ng-include="'templates/partial/left-sidebar.html'"></div>
+<div class="container" id="app-content">
+
+	<div class="page-header col-md-12">
+		<h1>Ads - Please Login</h1>
 	</div>
 
-	<div class='col-md-8' data-ng-view="">
+	<div class="col-md-4 sidebar">
+		<div data-ng-include="'/app/templates/partial/sidebar.html'"></div>
 	</div>
 
-	<div class="col-md-2 sidebar" data-ng-controller="RightSidebarController">
-		<div data-ng-include="'templates/partial/right-sidebar.html'"></div>
-	</div>
+	<div class="col-md-8" data-ng-view=""></div>
+
 </div>
 
-<footer id="footer">&copy; 2014 by Software University Foundation, No Rights Reserved</footer>
+<footer class="footer">
+	<div class="container">
+		<p class="text-muted">&copy; 2014 by Vasil Tsintsev @ Software University Foundation, No Rights Reserved</p>
+	</div>
+</footer>
 
 <!-- JavaScript Includes -->
 
@@ -39,9 +67,11 @@
 <script src="/app/js/app.js"></script>
 
 <script src="/app/js/services/adsServices.js"></script>
+<script src="/app/js/services/homePageService.js"></script>
 <!-- TODO: include the other services -->
 
 <script src="/app/js/controllers/AppController.js"></script>
+<script src="/app/js/controllers/HomeController.js"></script>
 <!-- TODO: include the other controllers -->
 
 <!-- End of JavaScript Includes -->
