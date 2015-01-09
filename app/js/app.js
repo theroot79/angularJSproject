@@ -6,21 +6,26 @@ var appAngularJS = angular.module('appAngularJS',['ngRoute','ngResource','ngSani
 appAngularJS.constant('baseServiceUrl', 'http://localhost:1337/api');
 appAngularJS.constant('pageSize', 2);
 
-appAngularJS.config(function ($routeProvider,localStorageServiceProvider) {
+appAngularJS.config(function ($routeProvider) {
 
 	$routeProvider.when('/', {
-		templateUrl: '/app/templates/home.html',
+		templateUrl: 'app/templates/home.html',
 		controller: 'HomeController'
 	});
 
 	$routeProvider.when('/login', {
-		templateUrl: '/app/templates/login.html',
+		templateUrl: 'app/templates/login.html',
 		controller: 'LoginController'
 	});
 
 	$routeProvider.when('/register', {
-		templateUrl: '/app/templates/register.html',
+		templateUrl: 'app/templates/register.html',
 		controller: 'RegisterController'
+	});
+
+	$routeProvider.when('/logout', {
+		template: '',
+		controller: 'LogoutController'
 	});
 
 	// TODO: define a route for the register controller
