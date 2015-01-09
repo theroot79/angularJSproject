@@ -7,8 +7,9 @@ appAngularJS.factory('notifyService',
 				noty({
 						text: msg,
 						type: 'info',
-						layout: 'topCenter',
-						timeout: 1000}
+						layout: 'center',
+						timeout: 1000
+					}
 				);
 			},
 			showError: function(msg, serverError) {

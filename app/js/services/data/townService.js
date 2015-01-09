@@ -1,16 +1,21 @@
 'use strict';
 
-appAngularJS.factory('townsService',
+appAngularJS.factory('townsService', ['$resource', 'baseServiceUrl',
 	function ($resource, baseServiceUrl) {
+
+		/**
+		 * Main resource
+		 */
+		var resource = $resource(baseServiceUrl + '/towns');
+
 		return {
-			getAllTowns: getTowns($resource,baseServiceUrl)
+			getAllTowns: getTowns()
 		};
 		/**
 		 * Pulls all towns from SoftUni service provider
 		 */
-		function getTowns($resource,baseServiceUrl){
-			return $resource(baseServiceUrl+'/api/towns').get();
+		function getTowns() {
+			return resource.query();
 		}
-
 	}
-);
+]);

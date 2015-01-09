@@ -1,11 +1,12 @@
 'use strict';
 
-var appAngularJS = angular.module('appAngularJS',['ngRoute','ngResource','ngSanitize']);
+var appAngularJS = angular.module('appAngularJS',['ngRoute','ngResource','ngSanitize','LocalStorageModule']);
 
-appAngularJS.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net');
+//appAngularJS.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api');
+appAngularJS.constant('baseServiceUrl', 'http://localhost:1337/api');
 appAngularJS.constant('pageSize', 2);
 
-appAngularJS.config(function ($routeProvider) {
+appAngularJS.config(function ($routeProvider,localStorageServiceProvider) {
 
 	$routeProvider.when('/', {
 		templateUrl: '/app/templates/home.html',
@@ -26,9 +27,25 @@ appAngularJS.config(function ($routeProvider) {
 
 	$routeProvider.otherwise({redirectTo: '/'});
 
+
 });
-appAngularJS.filter('unsafe',function($sce){
-	return function(val) {
-		return $sce.trustAsHtml(val);
-	};
-});
+
+/**
+ * LocalStorage settings.
+ * @type {Function|publishExternalAPI.isDefined|*}
+ */
+var isDefined = angular.isDefined,
+	isUndefined = angular.isUndefined,
+	isNumber = angular.isNumber,
+	isObject = angular.isObject,
+	isArray = angular.isArray,
+	extend = angular.extend,
+	toJson = angular.toJson,
+	fromJson = angular.fromJson;
+
+
+// Test if string is only contains numbers
+// e.g '1' => true, "'1'" => true
+function isStringNumber(num) {
+	return  /^-?\d+\.?\d*$/.test(num.replace(/["']/g, ''));
+}

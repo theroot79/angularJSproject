@@ -37,8 +37,6 @@
 
 <div class="container" id="app-content">
 
-	<h1 class="page-header col-md-12" data-ng-bind-html="allTitle | unsafe"></h1>
-
 	<div class="col-md-12" data-ng-view=""></div>
 
 </div>
@@ -55,18 +53,18 @@
 <script src="/app/lib/angular/angular-route.js"></script>
 <script src="/app/lib/angular/angular-resource.js"></script>
 <script src="/app/lib/angular/angular-sanitize.js"></script>
+<script src="/app/lib/angular/angular-local-storage.js"></script>
 <script src="/app/lib/jquery/jquery-2.1.3.min.js"></script>
-<script src="/app/lib/jquery.noty/jquery.noty.js"></script>
+<script src="/app/lib/jquery.noty/jquery.noty.packaged.min.js"></script>
 <script src="/app/lib/bootstrap/bootstrap.js"></script>
 
 <script src="/app/js/app.js"></script>
 
-<script src="/app/js/services/authService.js"></script>
 <script src="/app/js/services/notifyService.js"></script>
 <script src="/app/js/services/adsServices.js"></script>
 <script src="/app/js/services/data/townService.js"></script>
 <script src="/app/js/services/homePageService.js"></script>
-<script src="/app/js/services/reg.js"></script>
+<script src="/app/js/services/authService.js"></script>
 <!-- TODO: include the other services -->
 
 <script src="/app/js/controllers/AppController.js"></script>

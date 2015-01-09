@@ -1,35 +1,43 @@
 <div class="row">
 	<div class="col-md-offset-4 col-md-6">
 		<div class="form-login panel panel-primary">
-			<div class="panel-heading">Login</div>
+			<div class="panel-heading">Register now</div>
 			<div class="panel-body">
-				<form method="post" action="">
+				<form method="post" action="/#/register">
 					<label for="username">Username:</label>
-					<input type="text" id="username" class="form-control input-sm chat-input" />
+					<input type="text" id="username" class="form-control input-sm chat-input"
+							ng-model="user.username" ng-required=""/>
 					</br>
 					<label for="password">Password:</label>
-					<input type="password" id="password" class="form-control input-sm chat-input" />
+					<input type="password" id="password" class="form-control input-sm chat-input"
+					       ng-model="user.password"/>
 					</br>
-					<label for="password2">Confirm Password:</label>
-					<input type="password" id="password2" class="form-control input-sm chat-input" />
+					<label for="confirmPassword">Confirm Password:</label>
+					<input type="password" id="confirmPassword" class="form-control input-sm chat-input"
+					       ng-model="user.confirmPassword"/>
 					</br>
 					<label for="name">Name:</label>
-					<input type="text" id="name" class="form-control input-sm chat-input" />
+					<input type="text" id="name" class="form-control input-sm chat-input"
+							ng-model="user.name"/>
 					</br>
 					<label for="email">Email:</label>
-					<input type="email" id="email" class="form-control input-sm chat-input" />
+					<input type="email" id="email" class="form-control input-sm chat-input"
+					       ng-model="user.email"/>
 					</br>
 					<label for="phone">Phone:</label>
-					<input type="tel" id="phone" class="form-control input-sm chat-input" />
+					<input type="tel" id="phone" class="form-control input-sm chat-input"
+					       ng-model="user.phone"/>
 					</br>
-					<label for="town">Town:</label>
-					<select id="town" class="form-control input-sm chat-input">
-
+					<label for="townId">Town:</label>
+					<select id="townId" ng-model="user.townId" class="form-control input-sm chat-input"
+					        ng-options="town.id as town.name for town in towns">
+						<option value="0">-- Choose Town --</option>
 					</select>
 					</br>
 					<div class="wrapper">
 		            <span class="group-btn">
-		                <a href="#" class="btn btn-primary btn-md" onclick="RegisterNow()">Register</a>
+		                <a href="/#/register" class="btn btn-primary btn-md" ng-click="registerNow(user)">
+			                Register</a>
 						<a href="/#/login" class="btn btn-secondary btn-md pull-right">Login</a>
 		            </span>
 					</div>
