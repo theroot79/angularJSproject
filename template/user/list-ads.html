@@ -1,19 +1,14 @@
 <div class="col-sm-4 pull-left left-nav-panel" >
 
 	<div class="panel panel-default col-md-12">
-		<h4 class="panel-heading">Categories</h4>
-		<ul class="panel-body">
-			<li class="list-group-item" ng-repeat="c in publicCategories">
-				<a href="#" onclick="return false;" data-ng-click="categoryClicked(c)">{{c.name}}</a>
-			</li>
-		</ul>
-	</div>
-
-	<div class="panel panel-default col-md-12">
-		<h4 class="panel-heading">Towns</h4>
+		<h4 class="panel-heading">My Ads</h4>
 		<ul class="panel-body" >
-			<li class="list-group-item" ng-repeat="t in publicTowns">
-				<a href="#" onclick="return false;" data-ng-click="townClicked(t)">{{t.name}}</a>
+			<li class="list-group-item">
+				<a href="#/user/ads" data-ng-click="myAdsSetFilter('all')">All</a>
+				<a href="#/user/ads" onclick="return false;" data-ng-click="myAdsSetFilter('published')">Published</a>
+				<a href="#/user/ads" onclick="return false;" data-ng-click="myAdsSetFilter('published')">Waiting Approval</a>
+				<a href="#/user/ads" onclick="return false;" data-ng-click="myAdsSetFilter('published')">Inactive</a>
+				<a href="#/user/ads" onclick="return false;" data-ng-click="myAdsSetFilter('published')">Rejected</a>
 			</li>
 		</ul>
 	</div>

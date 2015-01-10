@@ -84,3 +84,21 @@ body{
 	overflow:hidden;
 	word-wrap: break-word;
 }
+
+/* ****************** user Area ************** */
+
+.image-box{
+	padding:10px;
+	margin-top:23px;
+	min-height:125px;
+	border:1px solid #CCC;
+	text-align: center;
+}
+.image-box p{
+	display:block;
+	width:100%;
+}
+.image-box img{
+	display:block;
+	max-width:100%;
+}

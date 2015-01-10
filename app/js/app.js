@@ -4,7 +4,7 @@ var appAngularJS = angular.module('appAngularJS',['ngRoute','ngResource','LocalS
 
 //appAngularJS.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api');
 appAngularJS.constant('baseServiceUrl', 'http://localhost:1337/api');
-appAngularJS.constant('pageSize', 2);
+appAngularJS.constant('PAGESIZE',4);
 
 appAngularJS.config(function ($routeProvider) {
 
@@ -22,6 +22,15 @@ appAngularJS.config(function ($routeProvider) {
 		templateUrl: 'template/register.html',
 		controller: 'RegisterController'
 	});
+	$routeProvider.when('/user/ads/publish', {
+		templateUrl: 'template/user/publish-new-ad.html',
+		controller: 'UserPublishNewAdController'
+	});
+	$routeProvider.when('/user/ads', {
+		templateUrl: 'template/user/list-ads.html',
+		controller: 'UserListAdsController'
+	});
+
 
 	$routeProvider.when('/logout', {
 		template: '',
@@ -32,6 +41,15 @@ appAngularJS.config(function ($routeProvider) {
 
 	$routeProvider.otherwise({redirectTo: '/'});
 
+});
+
+appAngularJS.run(function($rootScope, $location, authService){
+	$rootScope.$on('$locationChangeStart',function(event){
+		if($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()){
+			$location.path("/");
+		}
+		$rootScope.isLoggedIn = Boolean(authService.isLoggedIn());
+	});
 });
 
 /**

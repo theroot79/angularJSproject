@@ -3,6 +3,8 @@
 appAngularJS.controller('RegisterController',['$scope','$location','townsService','authService','notifyService',
 	function ($scope, $location, townsService, authService, notifyService) {
 
+		if(authService.isLoggedIn() == true)$location.path("/user/ads");
+
 		$scope.user = {townId: null};
 
 		townsService.getAllTowns().$promise

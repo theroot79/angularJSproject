@@ -28,10 +28,10 @@
 					<input type="tel" id="phone" class="form-control input-sm chat-input"
 					       ng-model="user.phone"/>
 					</br>
-					<label for="townId">Town:</label>
-					<select id="townId" ng-model="user.townId" class="form-control input-sm chat-input"
-					        ng-options="town.id as town.name for town in towns">
-						<option value="0">-- Choose Town --</option>
+					<label for="town">Town:</label>
+					<select id="town" ng-model="user.townId" class="form-control input-sm chat-input">
+						<option value="null"> --------- </option>
+						<option ng-repeat="t in towns" value="{{t.id}}">{{t.name}}</option>
 					</select>
 					</br>
 					<div class="wrapper">

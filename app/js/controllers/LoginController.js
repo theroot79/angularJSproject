@@ -3,6 +3,8 @@
 appAngularJS.controller('LoginController',['$scope','$location','authService','notifyService',
 	function ($scope, $location, authService, notifyService) {
 
+		if(authService.isLoggedIn() == true)$location.path("/user/ads");
+
 		$scope.loginNow = function (userData){
 			authService.login(userData)
 				.$promise
