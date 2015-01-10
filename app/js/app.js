@@ -30,6 +30,14 @@ appAngularJS.config(function ($routeProvider) {
 		templateUrl: 'template/user/list-ads.html',
 		controller: 'UserListAdsController'
 	});
+	$routeProvider.when('/user/ads/edit/:adId', {
+		templateUrl: 'template/user/edit-ad.html',
+		controller: 'UserEditAdController'
+	});
+	$routeProvider.when('/user/ads/del/:adId', {
+		templateUrl: 'template/user/del-ad.html',
+		controller: 'UserDelAdController'
+	});
 
 
 	$routeProvider.when('/logout', {

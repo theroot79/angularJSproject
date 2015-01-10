@@ -19,7 +19,6 @@ appAngularJS.factory('filters',
 			}
 		}
 
-
 		function getFilterParams(){
 			return filterParams;
 		}
@@ -29,11 +28,20 @@ appAngularJS.factory('filters',
 			filterParams.pagesize = pagesize;
 		}
 
+		function setStatus(statusStr){
+			if(statusStr == "0"){
+				delete filterParams.status;
+			}else{
+				filterParams.status = statusStr;
+			}
+		}
+
 		return {
 			filterByCategory: filterByCategory,
 			filterByTown: filterByTown,
 			getParams: getFilterParams,
-			setPage: setPage
+			setPage: setPage,
+			setStatus: setStatus
 		}
 	}
 );

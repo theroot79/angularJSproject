@@ -1,0 +1,48 @@
+<div class="col-md-offset-2 col-md-8">
+	<div class="form-login panel panel-primary">
+		<div class="panel-heading">Delete Ad #{{adNum}}</div>
+		<div class="panel-body">
+			<div class="col-md-7 pull-left">
+				<label for="title">Title:</label>
+				<input type="text" id="title" ng-model="adData.title" required="required"
+				       class="form-control input-sm chat-input"/>
+				<br/>
+				<label for="text">Text:</label>
+				<textarea id="text" ng-model="adData.text" required="required"
+				       class="form-control input-sm chat-input"></textarea>
+			</div>
+			<div class="col-md-4 pull-right image-box"><img src="{{adData.imageDataUrl}}" alt="No Image Yet"/></div>
+			<div class="col-md-12">
+				<p><br/>
+					<label for="category" class="pull-left">Image File:</label>
+					<input type="file" id="image" class="pull-left"
+					       onchange="angular.element(this).scope().fileSelected(this)" />
+					<a href="#" onclick="return false" ng-click="removeImageFromAd()"
+					   class="pull-right">Delete Image</a><br/><br/>
+				</p>
+				<p>
+					<label for="category">Category:</label>
+					<select id="category" ng-model="adData.categoryId" class="form-control input-sm chat-input">
+						<option value="null"> --------- </option>
+						<option ng-repeat="c in publicCategories" value="{{c.id}}">{{c.name}}</option>
+					</select>
+				</p>
+				<p>
+					<label for="town">Town:</label>
+					<select id="town" ng-model="adData.townId" class="form-control input-sm chat-input">
+						<option value="null"> --------- </option>
+						<option ng-repeat="t in publicTowns" value="{{t.id}}">{{t.name}}</option>
+					</select>
+				</p>
+				<p>
+					<div class="wrapper">
+		                <span class="group-btn">
+						<a ng-click="deleteAd(adData)" class="btn btn-primary btn-md">Delete Now!</a>
+						<a href="#/user/ads" class="btn btn-secondary btn-md pull-right">Cancel</a>
+		                </span>
+					</div>
+				<p>
+			</div>
+		</div>
+	</div>
+</div>
