@@ -1,24 +1,35 @@
 'use strict';
 
-appAngularJS.controller('RegisterController',['$scope','townsService','authService','notifyService',
-	function ($scope, townsService, authService, notifyService) {
+appAngularJS.controller('RegisterController',['$scope','$location','townsService','authService','notifyService',
+	function ($scope, $location, townsService, authService, notifyService) {
 
 		$scope.user = {townId: null};
 
-		townsService.getAllTowns.$promise
+		townsService.getAllTowns().$promise
 			.then(function(data){
 				$scope.towns = data;
 			});
 
 		$scope.registerNow = function (userData){
-			authService.register(userData,
-				function success() {
-					notifyService.showError("Registration Successful !");
+			authService.register(userData).$promise
+				.then(function() {
+					notifyService.showInfo("Registration Successful !");
+					$location.path('/');
 				},
 				function error(err) {
-					notifyService.showError("Registration Failed !", err);
-				}
-			);
+					var errStr = "";
+
+					if(err.data.modelState) {
+						var mstate = err.data.modelState;
+						for (var item in mstate){
+							errStr += mstate[item]+"\n";
+						}
+					}
+
+					var errTxt = '<br /><p>'+String(errStr)+'</p>';
+					notifyService.showError("Registration Failed !"+errTxt, err);
+				});
+
 		}
 	}
 ]);

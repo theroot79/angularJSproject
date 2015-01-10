@@ -1,6 +1,6 @@
 'use strict';
 
-var appAngularJS = angular.module('appAngularJS',['ngRoute','ngResource','ngSanitize','LocalStorageModule']);
+var appAngularJS = angular.module('appAngularJS',['ngRoute','ngResource','LocalStorageModule']);
 
 //appAngularJS.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api');
 appAngularJS.constant('baseServiceUrl', 'http://localhost:1337/api');
@@ -31,7 +31,6 @@ appAngularJS.config(function ($routeProvider) {
 	// TODO: define a route for the register controller
 
 	$routeProvider.otherwise({redirectTo: '/'});
-
 
 });
 

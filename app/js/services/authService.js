@@ -10,31 +10,25 @@ appAngularJS.factory('authService',['$http','$resource','baseServiceUrl','localS
 		var userInfoKey = 'userInfo';
 
 		function loginUser(userData, success, error){
-			var resource = $resource(baseUrl+'/login').save(userData).$promise.then(function(response){
-				var jsonResponseData = angular.toJson(response);
-				localStorageService.set(userInfoKey,jsonResponseData);
-				console.log('Logged IN!');
-				isAdmin();
-			});
+			var resource = $resource(baseUrl+'/login').save(userData);
+				resource.$promise.then(function(response){
+					var jsonResponseData = angular.toJson(response);
+					localStorageService.set(userInfoKey,jsonResponseData);
+				});
 			return resource;
 		}
 
 		function registerUser(userData, success, error){
-			var resource = $resource(baseUrl+'/register').save(userData).$promise.then(function(response){
-				var jsonResponseData = angular.toJson(response);
-				localStorageService.set(userInfoKey,jsonResponseData);
-				console.log('Registered!');
-			});
+			var resource = $resource(baseUrl+'/register').save(userData);
+				resource.$promise.then(function(response){
+					var jsonResponseData = angular.toJson(response);
+					localStorageService.set(userInfoKey,jsonResponseData);
+				});
 			return resource;
 		}
 
 		function logoutUser(){
-			var resource = $resource(baseUrl+'/logout').save().$promise.then(function(response){
-				localStorageService.removeItem(userInfoKey);
-				console.log('Logged Out!');
-				//angular.location.href='/#/';
-			});
-			return resource;
+			localStorageService.remove(userInfoKey);
 		}
 
 		function getCurrentUserInfo() {
@@ -47,6 +41,8 @@ appAngularJS.factory('authService',['$http','$resource','baseServiceUrl','localS
 			var userData = getCurrentUserInfo();
 			if(userData) {
 				headers.Authorization = 'Bearer ' + userData.access_token;
+			}else{
+				return false;
 			}
 			return headers;
 		}
@@ -73,7 +69,7 @@ appAngularJS.factory('authService',['$http','$resource','baseServiceUrl','localS
 			},
 
 			isLoggedIn : function() {
-				// TODO
+				return !!getCurrentUserInfo();
 			},
 
 			isNormalUser : function() {

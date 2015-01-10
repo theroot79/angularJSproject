@@ -11,6 +11,10 @@ body{
 
 }
 
+.main-logo{
+	padding-top:3px;
+	padding-right:50px;
+}
 .navbar-default {
 	background-image: linear-gradient(to bottom, #FFF 0%, #E4FFE1 100%);
 	background-repeat: repeat-x;
@@ -39,4 +43,42 @@ body{
 }
 .container .text-muted{
 	margin:20px 0;
+}
+.left-nav-panel .panel-body{
+	padding:0;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.left-nav-panel li{
+	padding:0;
+}
+.left-nav-panel li a{
+	display:block;
+	width:100%;
+	height:100%;
+	padding:10px 15px;
+}
+.left-nav-panel li a:hover{
+	background-color:#F3F3F3;
+	text-decoration: none;
+}
+
+/* ****************** AD Area ************** */
+.ad-date{
+	position:relative;
+	top:-18px;
+}
+.ad-photo{
+	display:block;
+	text-align: center;
+}
+.ad-photo img{
+	display:block;
+	width:110%;
+	margin:0 auto;
+}
+.ad-others{
+	overflow:hidden;
+	word-wrap: break-word;
 }

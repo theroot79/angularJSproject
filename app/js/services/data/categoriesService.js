@@ -1,14 +1,14 @@
 'use strict';
 
-appAngularJS.factory('townsService', ['$resource', 'baseServiceUrl',
+appAngularJS.factory('categoriesService', ['$resource', 'baseServiceUrl',
 	function ($resource, baseServiceUrl) {
 
 		var categoriesResource = $resource(
-			baseServiceUrl + '/towns'
+			baseServiceUrl + '/categories'
 		);
 
 		return {
-			getAllTowns: function(success, error) {
+			getCategories: function(success, error) {
 				return categoriesResource.query(success, error);
 			}
 		}

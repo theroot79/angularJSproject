@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-ng-app="appAngularJS" data-ng-controller="AppController" lang="en">
+<html lang="en" data-ng-app="appAngularJS" data-ng-controller="AppController">
 <head>
 	<meta charset="utf-8"/>
 	<title>Ads - My AngularJS App</title>
@@ -20,17 +20,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/#/">Ads - My AngularJS App</a>
+				<a class="navbar-brand main-logo" href="/#/"><img src="app/img/logo.png" alt="Logo" /></a>
+
 			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#/">Home</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#/login">Login</a></li>
-					<li><a href="#/register">Register</a></li>
-				</ul>
-			</div>
+			<div id="navbar" class="navbar-collapse collapse"
+			     data-ng-include="'app/templates/partial/menu-loggedIn.html'" ng-if="isLoggedIn" ></div>
+			<div id="navbar2" class="navbar-collapse collapse"
+			     data-ng-include="'app/templates/partial/menu-notLoggedIn.html'" ng-if="!isLoggedIn"></div>
 		</div>
 	</nav>
 </header>
@@ -48,7 +44,6 @@
 </footer>
 
 <!-- JavaScript Includes -->
-
 <script src="app/lib/angular/angular.js"></script>
 <script src="app/lib/angular/angular-route.js"></script>
 <script src="app/lib/angular/angular-resource.js"></script>
@@ -63,18 +58,19 @@
 <script src="app/js/services/notifyService.js"></script>
 <script src="app/js/services/adsServices.js"></script>
 <script src="app/js/services/data/townService.js"></script>
-<script src="app/js/services/homePageService.js"></script>
+<script src="app/js/services/data/categoriesService.js"></script>
 <script src="app/js/services/authService.js"></script>
-<!-- TODO: include the other services -->
 
+<!-- Controllers -->
+<script src="app/js/controllers/allPages.js"></script>
 <script src="app/js/controllers/AppController.js"></script>
 <script src="app/js/controllers/HomeController.js"></script>
 <script src="app/js/controllers/RegisterController.js"></script>
 <script src="app/js/controllers/LoginController.js"></script>
 <script src="app/js/controllers/LogoutController.js"></script>
-<!-- TODO: include the other controllers -->
 
 <!-- End of JavaScript Includes -->
+
 
 </body>
 </html>
