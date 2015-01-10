@@ -6,8 +6,8 @@ appAngularJS.factory('adsService',['$resource','baseServiceUrl',
 			update: { method: 'PUT' }
 		});
 
-		function getAllPublicAds(){
-			return resource.get();
+		function getAllPublicAds(params){
+			return resource.get(params);
 		}
 
 		function editSomeAd(adId,ad){
@@ -25,10 +25,6 @@ appAngularJS.factory('adsService',['$resource','baseServiceUrl',
 		function removeSomeAd(adID){
 			return resource.remove({id:adId});
 		}
-
-		var categoriesResource = $resource(
-			baseServiceUrl + '/categories'
-		);
 
 		return {
 			getPublicAds: getAllPublicAds,

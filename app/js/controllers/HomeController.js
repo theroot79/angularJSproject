@@ -1,23 +1,43 @@
 'use strict';
 
-appAngularJS.controller('HomeController',['$scope','$rootScope','adsService','townsService','categoriesService','authService','notifyService','pageSize',
-	function ($scope, $rootScope, adsService, townsService, categoriesService, authService, notifyService, pageSize) {
+appAngularJS.controller('HomeController',['$scope','$rootScope','adsService','townsService','categoriesService','authService','notifyService','filters','pageSize',
+	function ($scope, $rootScope, adsService, townsService, categoriesService, authService, notifyService, filters, pageSize) {
+
+		$scope.startPage = 0;
+		$scope.itemsPerPage = 5;
 
 		$rootScope.isLoggedIn = Boolean(authService.isLoggedIn());
-		console.log($rootScope.isLoggedIn);
 
-		adsService.getPublicAds().$promise.then(function(resp){
-			$scope.allPublicAds = resp;
+		function loadPublicAds(params){
+			var paramsSend = params || {};
+			adsService.getPublicAds(paramsSend).$promise.then(function (resp) {
+				$scope.allPublicAds = resp;
+			});
+		}
+
+		loadPublicAds();
+
+		categoriesService.getCategories().$promise.then(function(resp){
+			$scope.publicCategories = resp;
+
 		});
+		$scope.categoryClicked = function (categoryObj){
+			filters.filterByCategory(categoryObj);
+			loadPublicAds(filters.getFilterParams());
+		};
 
-		categoriesService.getCategories().$promise.then(function(data){
-			$scope.publicCategories = data;
+		townsService.getAllTowns().$promise.then(function(resp){
+			$scope.publicTowns = resp;
 		});
+		$scope.townClicked = function (townObj){
+			filters.filterByTown(townObj);
+			loadPublicAds(filters.getFilterParams());
+		};
 
-		$scope.towns = townsService.getAllTowns().$promise.then(function(data){
-			$scope.publicTowns = data;
-		});
 
+		$scope.pageChanged = function(){
+
+		}
 
 	}
 ]);

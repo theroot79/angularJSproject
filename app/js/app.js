@@ -1,6 +1,6 @@
 'use strict';
 
-var appAngularJS = angular.module('appAngularJS',['ngRoute','ngResource','LocalStorageModule']);
+var appAngularJS = angular.module('appAngularJS',['ngRoute','ngResource','LocalStorageModule','ui.bootstrap.pagination']);
 
 //appAngularJS.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api');
 appAngularJS.constant('baseServiceUrl', 'http://localhost:1337/api');
@@ -9,17 +9,17 @@ appAngularJS.constant('pageSize', 2);
 appAngularJS.config(function ($routeProvider) {
 
 	$routeProvider.when('/', {
-		templateUrl: 'app/templates/home.html',
+		templateUrl: 'template/home.html',
 		controller: 'HomeController'
 	});
 
 	$routeProvider.when('/login', {
-		templateUrl: 'app/templates/login.html',
+		templateUrl: 'template/login.html',
 		controller: 'LoginController'
 	});
 
 	$routeProvider.when('/register', {
-		templateUrl: 'app/templates/register.html',
+		templateUrl: 'template/register.html',
 		controller: 'RegisterController'
 	});
 

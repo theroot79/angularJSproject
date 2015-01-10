@@ -59,7 +59,9 @@ body{
 	height:100%;
 	padding:10px 15px;
 }
-.left-nav-panel li a:hover{
+.left-nav-panel li a:hover,
+.left-nav-panel li a:active,
+.left-nav-panel li a.sel{
 	background-color:#F3F3F3;
 	text-decoration: none;
 }
