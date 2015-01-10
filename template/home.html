@@ -25,7 +25,7 @@
 
 		<div class="panel-heading">
 			<h3 class="panel-title">{{ ad.title }}</h3>
-			<div class="pull-right ad-dat">{{ ad.date | date:'dd-MMM-yyyy' }}</div>
+			<div class="pull-right ad-date">{{ ad.date | date:'dd-MMM-yyyy' }}</div>
 		</div>
 		<div class="panel-body">
 			<div class="pull-left col-md-4 ad-photo">
@@ -43,8 +43,8 @@
 		</div>
 	</div>
 
-	<pagination page="startPage" class="pagination" total-items="ad.numItems" items-per-page="itemsPerPage"
-	            data-numPages="ad.numPages"
-	     ng-model="homePagePaging" ng-change="pageChanged()"></pagination>
+	<pagination class="pagination" total-items="allPublicAds.numItems" items-per-page="itemsPerPage"
+	            data-numPages="allPublicAds.numPages"
+	     ng-model="currentPage" ng-change="pageChanged()"></pagination>
 
 </div>

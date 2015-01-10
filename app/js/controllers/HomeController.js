@@ -3,10 +3,9 @@
 appAngularJS.controller('HomeController',['$scope','$rootScope','adsService','townsService','categoriesService','authService','notifyService','filters','pageSize',
 	function ($scope, $rootScope, adsService, townsService, categoriesService, authService, notifyService, filters, pageSize) {
 
-		$scope.startPage = 0;
-		$scope.itemsPerPage = 5;
-
-		$rootScope.isLoggedIn = Boolean(authService.isLoggedIn());
+		$scope.currentPage = 1;
+		$scope.startPage = 1;
+		$scope.itemsPerPage = pageSize;
 
 		function loadPublicAds(params){
 			var paramsSend = params || {};
@@ -15,7 +14,8 @@ appAngularJS.controller('HomeController',['$scope','$rootScope','adsService','to
 			});
 		}
 
-		loadPublicAds();
+		filters.setPage($scope.currentPage,$scope.itemsPerPage);
+		loadPublicAds(filters.getParams());
 
 		categoriesService.getCategories().$promise.then(function(resp){
 			$scope.publicCategories = resp;
@@ -23,7 +23,7 @@ appAngularJS.controller('HomeController',['$scope','$rootScope','adsService','to
 		});
 		$scope.categoryClicked = function (categoryObj){
 			filters.filterByCategory(categoryObj);
-			loadPublicAds(filters.getFilterParams());
+			loadPublicAds(filters.getParams());
 		};
 
 		townsService.getAllTowns().$promise.then(function(resp){
@@ -31,13 +31,12 @@ appAngularJS.controller('HomeController',['$scope','$rootScope','adsService','to
 		});
 		$scope.townClicked = function (townObj){
 			filters.filterByTown(townObj);
-			loadPublicAds(filters.getFilterParams());
+			loadPublicAds(filters.getParams());
 		};
 
-
 		$scope.pageChanged = function(){
-
-		}
-
+			filters.setPage($scope.currentPage,$scope.itemsPerPage);
+			loadPublicAds(filters.getParams());
+		};
 	}
 ]);

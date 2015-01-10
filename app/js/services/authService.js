@@ -58,26 +58,32 @@ appAngularJS.factory('authService',['$http','$resource','baseServiceUrl','localS
 			return isAdmin;
 		}
 
+		function isAnonymouse(){
+			var userData = getCurrentUserInfo();
+			if(userData && (typeof userData.currentUser !== undefined)){
+				return userData.currentUser;
+			}else{
+				return false;
+			}
+		}
+
+		function isNormalUser () {
+			var currentUser = this.getCurrentUser();
+			return (currentUser != undefined) && (!currentUser.isAdmin);
+		}
+
 		return {
 			login: loginUser,
 			register: registerUser,
 			logout:logoutUser,
 			getCurrentUser :getCurrentUserInfo(),
-
-			isAnonymous : function() {
-				// TODO
-			},
-
+			isAnonymous:isAnonymouse,
+			isNormalUser:isNormalUser,
+			isAdmin :isAdmin,
+			getAuthHeaders : getAuthHeadersFnc,
 			isLoggedIn : function() {
 				return !!getCurrentUserInfo();
-			},
-
-			isNormalUser : function() {
-				// TODO
-			},
-
-			isAdmin :isAdmin,
-			getAuthHeaders : getAuthHeadersFnc()
+			}
 		}
 	}
 ]);

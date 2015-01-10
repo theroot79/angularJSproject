@@ -1,0 +1,47 @@
+<div class="col-md-offset-2 col-md-8">
+	<div class="form-login panel panel-primary">
+		<div class="panel-heading">Publish New Ad</div>
+		<div class="panel-body">
+			<div class="col-md-7 pull-left">
+				<label for="title">Title:</label>
+				<input type="text" id="title" ng-model="adData.title" required="required"
+				       class="form-control input-sm chat-input"/>
+				<br/>
+				<label for="text">Text:</label>
+				<textarea id="text" ng-model="adData.text" required="required"
+				       class="form-control input-sm chat-input"></textarea>
+			</div>
+			<div class="col-md-4 pull-right">
+				<img src="" alt="Select Image to Upload" ng-bind="adData.img"/>
+			</div>
+			<div class="col-md-12">
+				<p>
+					<label for="category">Image File:</label>
+					<input type="file" name="imageFile" value="" ng-model="ad.file" ng-change="adData.img.src"/>
+				</p>
+				<p>
+					<label for="category">Category:</label>
+					<select id="category" ng-model="adData.categoryId" class="form-control input-sm chat-input">
+						<option value="null">(None)</option>
+						<option ng-repeat="c in publicCategories" value="{{c.id}}">{{c.name}}</option>
+					</select>
+				</p>
+				<p>
+					<label for="town">Town:</label>
+					<select id="town" ng-model="adData.townId" class="form-control input-sm chat-input">
+						<option value="null">(None)</option>
+						<option ng-repeat="t in publicTowns" value="{{t.id}}">{{t.name}}</option>
+					</select>
+				</p>
+				<p>
+					<div class="wrapper">
+		                <span class="group-btn">
+						<a ng-click="publishAd(adData)" class="btn btn-primary btn-md">Publish</a>
+						<a href="#/user/ads" class="btn btn-secondary btn-md pull-right">Cancel</a>
+		                </span>
+					</div>
+				<p>
+			</div>
+		</div>
+	</div>
+</div>

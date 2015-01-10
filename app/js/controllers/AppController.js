@@ -1,8 +1,8 @@
 'use strict';
 
-appAngularJS.controller('AppController',
-	function ($scope, authService) {
-		// Put the authService in the $scope to make it accessible from all screens
+appAngularJS.controller('AppController',['$scope','$rootScope','authService',
+	function ($scope, $rootScope, authService) {
 		$scope.authService = authService;
+		$rootScope.isLoggedIn = Boolean(authService.isLoggedIn());
 	}
-);
+]);
