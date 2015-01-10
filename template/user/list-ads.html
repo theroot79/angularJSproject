@@ -14,8 +14,7 @@
 	</div>
 
 </div>
-<div class="col-md-8 adslist">
-
+<div class="col-md-8 adslist bgloader">
 	<div class="panel panel-default ad" data-ng-repeat="ad in allPublicAds.ads">
 
 		<div class="panel-heading">
@@ -24,7 +23,7 @@
 		</div>
 		<div class="panel-body">
 			<div class="pull-left col-md-4 ad-photo">
-				<img src="{{ ad.imageDataUrl }}" alt="no-image" />
+				<img src="app/img/no_image.jpg" alt="no-image" data-ng-src="{{ad.imageDataUrl}}"/>
 			</div>
 			<div class="pull-right col-md-8 ad-others">
 

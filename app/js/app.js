@@ -38,14 +38,15 @@ appAngularJS.config(function ($routeProvider) {
 		templateUrl: 'template/user/del-ad.html',
 		controller: 'UserDelAdController'
 	});
-
+	$routeProvider.when('/user/profile/edit', {
+		templateUrl: 'template/user/edit-user-profile.html',
+		controller: 'UserEditProfileController'
+	});
 
 	$routeProvider.when('/logout', {
 		template: '',
 		controller: 'LogoutController'
 	});
-
-	// TODO: define a route for the register controller
 
 	$routeProvider.otherwise({redirectTo: '/'});
 
@@ -58,7 +59,14 @@ appAngularJS.run(function($rootScope, $location, authService){
 		}
 		$rootScope.isLoggedIn = Boolean(authService.isLoggedIn());
 	});
+	$rootScope.homePage = function(){
+		location.reload();
+	};
+
 });
+
+
+
 
 /**
  * LocalStorage settings.

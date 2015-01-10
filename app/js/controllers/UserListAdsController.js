@@ -8,9 +8,11 @@ appAngularJS.controller('UserListAdsController',['$scope','$location','userServi
 		$scope.itemsPerPage = PAGESIZE;
 
 		function loadUserAds(params){
+			jQuery('.adslist').addClass('bgloader');
 			var paramsSend = params || {};
 			userServices.getUserAds(paramsSend,function (resp) {
 				$scope.allPublicAds = resp;
+				jQuery('.adslist').removeClass('bgloader');
 			});
 		}
 

@@ -65,7 +65,12 @@ body{
 	background-color:#F3F3F3;
 	text-decoration: none;
 }
-
+.bgloader{
+	display:block;
+	min-height: 300px;
+	background:transparent url(../img/loader.gif?v=1) no-repeat 60% 30px;
+	background-size: 200px auto;
+}
 /* ****************** AD Area ************** */
 .ad-date{
 	position:relative;

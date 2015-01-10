@@ -62,12 +62,43 @@ appAngularJS.factory('userServices',['$http','baseServiceUrl','authService',
 			};
 			return $http(request).success(success).error(error)
 		}
-		function delUserAd(adData,success,error){
+
+		function delUserAd(adId,success,error){
+			var request = {
+				method: 'DELETE',
+				url: baseServiceUrl + '/user/ads/'+adId,
+				headers: authService.getAuthHeaders(),
+				data: {}
+			};
+			return $http(request).success(success).error(error)
+		}
+
+		function getUserInfo(success,error){
+			var request = {
+				method: 'GET',
+				url: baseServiceUrl + '/user/profile/',
+				headers: authService.getAuthHeaders(),
+				params: {}
+			};
+			$http(request).success(success).error(error);
+		}
+
+		function updateUserInfo(userInfoObj,success,error){
 			var request = {
 				method: 'PUT',
-				url: baseServiceUrl + '/user/ads/'+adData.id,
+				url: baseServiceUrl + '/user/profile',
 				headers: authService.getAuthHeaders(),
-				data: adData
+				data: userInfoObj
+			};
+			return $http(request).success(success).error(error)
+		}
+
+		function updateUserPass(userInfoObj,success,error){
+			var request = {
+				method: 'PUT',
+				url: baseServiceUrl + '/user/changePassword',
+				headers: authService.getAuthHeaders(),
+				data: userInfoObj
 			};
 			return $http(request).success(success).error(error)
 		}
@@ -79,7 +110,10 @@ appAngularJS.factory('userServices',['$http','baseServiceUrl','authService',
 			publishAgainAd:publishAgainAd,
 			getUserAdById:getUserAdById,
 			editUserAd:editUserAd,
-			delUserAd:delUserAd
+			delUserAd:delUserAd,
+			getUserInfo:getUserInfo,
+			updateUserInfo:updateUserInfo,
+			updateUserPass:updateUserPass
 		}
 	}
 ]);
