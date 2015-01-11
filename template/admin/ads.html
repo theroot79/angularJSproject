@@ -81,7 +81,7 @@
 	</div>
 
 	<pagination class="pagination" total-items="allPublicAds.numItems" items-per-page="itemsPerPage"
-	            data-numPages="allPublicAds.numPages"  data-ng-show="allPublicAds.numItems > 0"
+	            data-numPages="allPublicAds.numPages"  data-ng-show="allPublicAds.numItems > itemsPerPage"
 	            data-ng-model="currentPage" data-ng-change="pageChanged()"></pagination>
 	<div class="col-md-12" data-ng-show="allPublicAds.numItems < 1"> No Items to display</div>
 
