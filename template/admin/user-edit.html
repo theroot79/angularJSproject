@@ -1,0 +1,64 @@
+<div class="row">
+	<div class="col-md-offset-1 col-md-5 pull-left">
+		<div class="form-login panel panel-primary">
+			<div class="panel-heading">Edit Profile</div>
+			<div class="panel-body">
+				<form method="post">
+					<label for="username">UserName:</label>
+					<input type="text" id="username" class="form-control input-sm chat-input"
+					       data-ng-model="user.userName" readonly="readonly"/>
+					</br>
+					<label for="name">Name:</label>
+					<input type="text" id="name" class="form-control input-sm chat-input"
+					       data-ng-model="user.name"/>
+					</br>
+					<label for="email">Email:</label>
+					<input type="email" id="email" class="form-control input-sm chat-input"
+					       data-ng-model="user.email"/>
+					</br>
+					<label for="phone">Phone:</label>
+					<input type="tel" id="phone" class="form-control input-sm chat-input"
+					       data-ng-model="user.phoneNumber"/>
+					</br>
+					<label for="userIsAdmin">Is Administrator:</label>
+					<input type="checkbox" id="userIsAdmin" class="chat-input"
+					       data-ng-model="user.isAdmin" value="1"/>
+					</br></br>
+					<div class="wrapper">
+		            <span class="group-btn">
+		                <a href="/#/" onclick="return false;" class="btn btn-primary btn-md"
+		                   data-ng-click="updateUserInfoNow(user)">Update</a>
+						<a href="/#/admin/users/list" class="btn btn-secondary btn-md pull-right">Cancel</a>
+		            </span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-offset-1 col-md-5 pull-right">
+		<div class="form-login panel panel-primary">
+			<div class="panel-heading">Change Password</div>
+			<div class="panel-body">
+				<form method="post">
+					<label for="newPassword">New Password:</label>
+					<input type="password" id="newPassword" class="form-control input-sm chat-input"
+					       data-ng-model="user.newPassword"/>
+					</br>
+					<label for="confirmPassword">Confirm New Password:</label>
+					<input type="password" id="confirmPassword" class="form-control input-sm chat-input"
+					       data-ng-model="user.confirmPassword"/>
+					</br>
+					<div class="wrapper">
+		            <span class="group-btn">
+		                <a href="/#/" onclick="return false;" class="btn btn-primary btn-md"
+		                   data-ng-click="changePasswordNow(user)">Change Password</a>
+						<a href="/#/admin/users/list" class="btn btn-secondary btn-md pull-right">Cancel</a>
+		            </span>
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>
+</div>

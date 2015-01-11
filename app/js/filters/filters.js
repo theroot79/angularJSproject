@@ -36,10 +36,14 @@ appAngularJS.factory('filters',
 		}
 
 		function sortBy(sortByStr){
-			if(filterParams.sortBy && (filterParams.sortBy == sortByStr)){
-				filterParams.sortBy = '-'+sortByStr;
-			}else{
-				filterParams.sortBy = sortByStr;
+			if(sortByStr == 0){
+				delete filterParams.sortBy;
+			}else {
+				if (filterParams.sortBy && (filterParams.sortBy == sortByStr)) {
+					filterParams.sortBy = '-' + sortByStr;
+				} else {
+					filterParams.sortBy = sortByStr;
+				}
 			}
 		}
 

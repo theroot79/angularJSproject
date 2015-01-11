@@ -47,6 +47,12 @@ appAngularJS.config(function ($routeProvider) {
 	}).when('/admin/users/list', {
 		templateUrl: 'template/admin/users-list.html',
 		controller: 'AdminUsersListController'
+	}).when('/admin/users/edit/:id', {
+		templateUrl: 'template/admin/user-edit.html',
+		controller: 'AdminUsersEditController'
+	}).when('/admin/users/delete/:id', {
+		templateUrl: 'template/admin/user-delete.html',
+		controller: 'AdminUsersDeleteController'
 	}).when('/admin/categories/list', {
 		templateUrl: 'template/admin/categories-list.html',
 		controller: 'AdminCategoriesListController'

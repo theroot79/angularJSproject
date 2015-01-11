@@ -17,6 +17,7 @@ appAngularJS.controller('AdminListAdsController',['$scope','$location','adminSer
 		}
 
 
+		filters.sortBy(0);
 		filters.setPage($scope.currentPage,$scope.itemsPerPage);
 		loadAdminAds(filters.getParams());
 

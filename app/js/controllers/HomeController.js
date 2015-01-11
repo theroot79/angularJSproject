@@ -14,6 +14,7 @@ appAngularJS.controller('HomeController',['$scope','$rootScope','adsService','to
 			});
 		}
 
+		filters.sortBy(0);
 		filters.setPage($scope.currentPage,$scope.itemsPerPage);
 		loadPublicAds(filters.getParams());
 

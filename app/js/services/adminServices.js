@@ -63,6 +63,56 @@ appAngularJS.factory('adminServices',['$http','baseServiceUrl','authService',
 			return $http(request).success(success).error(error)
 		}
 
+		function getAdminUsers(params,success,error){
+			var request = {
+				method: 'GET',
+				url: baseServiceUrl + '/admin/users',
+				headers: authService.getAuthHeaders(),
+				params: params
+			};
+			$http(request).success(success).error(error);
+		}
+
+		function getUserInfo(uid,success,error){
+			var request = {
+				method: 'GET',
+				url: baseServiceUrl + '/admin/users/'+uid,
+				headers: authService.getAuthHeaders(),
+				params: {}
+			};
+			$http(request).success(success).error(error);
+		}
+
+		function updateUserInfo(userInfoObj,success,error){
+			var request = {
+				method: 'PUT',
+				url: baseServiceUrl + '/admin/user/'+userInfoObj.userName,
+				headers: authService.getAuthHeaders(),
+				data: userInfoObj
+			};
+			return $http(request).success(success).error(error)
+		}
+
+		function updateUserPass(userInfoObj,success,error){
+			var request = {
+				method: 'PUT',
+				url: baseServiceUrl + '/admin/SetPassword',
+				headers: authService.getAuthHeaders(),
+				data: userInfoObj
+			};
+			return $http(request).success(success).error(error)
+		}
+
+		function deleteUser(user,success,error){
+			var request = {
+				method: 'DELETE',
+				url: baseServiceUrl + '/admin/user/'+user.userName,
+				headers: authService.getAuthHeaders(),
+				data: {}
+			};
+			return $http(request).success(success).error(error)
+		}
+
 		function getAdminCategories(params,success,error){
 			var request = {
 				method: 'GET',
@@ -80,6 +130,11 @@ appAngularJS.factory('adminServices',['$http','baseServiceUrl','authService',
 			delAdminAd:delAdminAd,
 			approveAd:approveAd,
 			rejectAd:rejectAd,
+			getAdminUsers:getAdminUsers,
+			getUserInfo:getUserInfo,
+			updateUserInfo:updateUserInfo,
+			updateUserPass:updateUserPass,
+			deleteUser:deleteUser,
 			getAdminCategories:getAdminCategories
 		}
 	}

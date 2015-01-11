@@ -1,42 +1,34 @@
 'use strict';
 
-appAngularJS.controller('AdminUsersListController',['$scope','$location','adminServices','authService','townsService', 'categoriesService','notifyService','filters','PAGESIZE',
-	function ($scope, $location, adminServices, authService, townsService, categoriesService, notifyService, filters, PAGESIZE) {
+appAngularJS.controller('AdminUsersListController',['$scope','adminServices','filters',
+	function ($scope, adminServices, filters) {
 
 		$scope.currentPage = 1;
 		$scope.startPage = 1;
-		$scope.itemsPerPage = PAGESIZE;
-		$scope.SortBy = 'username';
+		$scope.itemsPerPage = 10;
+		$scope.SortBy = 'UserName';
 		$scope.reverseSort = false;
 
-		function loadAdminCategories(params){
+		function loadAdminUsers(params){
 			var paramsSend = params || {};
-			adminServices.getAdminCategories(paramsSend,function (resp) {
-				console.log(resp);
-				$scope.allCategories = resp;
+			adminServices.getAdminUsers(paramsSend,function (resp) {
+				$scope.allUsers = resp;
 			});
 		}
 
 		$scope.sortBy = function(sortByStr){
 			filters.sortBy(sortByStr);
-			loadAdminCategories(filters.getParams());
+			loadAdminUsers(filters.getParams());
 			$scope.reverseSort = $scope.reverseSort == false;
 		};
 
 		filters.setPage($scope.currentPage,$scope.itemsPerPage);
-		filters.sortBy('Name');
-		loadAdminCategories(filters.getParams());
-
-
-		$scope.categoryClicked = function (categoryObj){
-			console.log(categoryObj);
-			filters.filterByCategory(categoryObj);
-			loadAdminCategories(filters.getParams());
-		};
+		filters.sortBy('UserName');
+		loadAdminUsers(filters.getParams());
 
 		$scope.pageChanged = function(){
 			filters.setPage($scope.currentPage,$scope.itemsPerPage);
-			loadAdminCategories(filters.getParams());
+			loadAdminUsers(filters.getParams());
 		};
 
 	}

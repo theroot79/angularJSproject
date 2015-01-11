@@ -1,31 +1,38 @@
-<div class="col-md-10 col-md-offset-1 adslist bgloader">
+<div class="col-md-12 userslist bgloader">
 	<div class="form-login panel panel-primary">
 		<div class="panel-heading">Browse Users</div>
 		<div class="panel-body">
 			<table class="table table-bordered">
 				<thead>
 				<tr>
-					<th>ID</th>
 					<th>
 						<a href="#" onclick="return false;"
-						   ng-click="sortBy('Name')">Category
-							 <span ng-show="reverseSort">^</span><span ng-show="!reverseSort">v</span></span>
+						   data-ng-click="sortBy('UserName')">Username
+							<span data-ng-show="reverseSort">^</span><span data-ng-show="!reverseSort">v</span></span>
 						</a>
 					</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Phone</th>
 					<th>Action</th>
 				</tr>
 				</thead>
 				<tbody>
-				<tr ng-repeat="c in allCategories.categories | orderBy:orderByField:reverseSort">
-					<td>{{c.id}}</td>
-					<td>{{c.username}}</td>
-					<td><a href="/#/admin/categories/list">edit</a> | <a href="/#/admin/categories/list">del</a></td>
+				<tr data-ng-repeat="u in allUsers.users">
+					<td>{{u.username}}</td>
+					<td>{{u.name}}</td>
+					<td>{{u.email}}</td>
+					<td>{{u.phoneNumber}}</td>
+					<td>
+						<a href="/#/admin/users/edit/{{u.id}}">edit</a> |
+						<a href="/#/admin/users/delete/{{u.id}}" date-ng-hide="u.isAdmin">delete</a>
+					</td>
 				</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<pagination class="pagination" total-items="allCategories.numItems" items-per-page="itemsPerPage"
-	            data-numPages="allCategories.numPages"
-	            ng-model="currentPage" ng-change="pageChanged()"></pagination>
+	<pagination class="pagination" total-items="allUsers.numItems" items-per-page="itemsPerPage"
+	            data-numPages="allUsers.numPages"
+	            data-ng-model="currentPage" data-ng-change="pageChanged()"></pagination>
 </div>
