@@ -4,7 +4,7 @@ var appAngularJS = angular.module('appAngularJS',['ngRoute','ngResource','LocalS
 
 //appAngularJS.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api');
 appAngularJS.constant('baseServiceUrl', 'http://localhost:1337/api');
-appAngularJS.constant('PAGESIZE',4);
+appAngularJS.constant('PAGESIZE',5);
 
 appAngularJS.config(function ($routeProvider) {
 
