@@ -1,0 +1,18 @@
+<div class="col-md-offset-2 col-md-8">
+	<div class="form-login panel panel-primary">
+		<div class="panel-heading">Confirm delete town ?</div>
+		<div class="panel-body">
+			<div class="col-md-7 pull-left">
+				<label>Town:</label> {{town.name}}
+				<br/><br/>
+				<div class="wrapper">
+		            <span class="group-btn">
+		                <a href="/#/" onclick="return false;" class="btn btn-danger btn-md"
+		                   data-ng-click="deleteTownNow(town)">Delete</a>
+						<a href="/#/admin/towns/list" class="btn btn-secondary btn-md pull-right">Cancel</a>
+		            </span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

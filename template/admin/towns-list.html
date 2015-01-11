@@ -1,0 +1,34 @@
+<div class="col-md-10 col-md-offset-1 adslist bgloader">
+	<div class="form-login panel panel-primary">
+		<div class="panel-heading">
+			Browse Towns <a href="/#/admin/towns/add" class="pull-right btn btn-info" style="color:#FFF;top:-7px;position:relative;"> Add Town </a>
+		</div>
+		<div class="panel-body">
+			<table class="table table-bordered">
+				<thead>
+				<tr>
+					<th>ID</th>
+					<th>
+						<a href="#" onclick="return false;"
+						   data-ng-click="sortBy('Name')">Town
+							 <span data-ng-show="reverseSort">^</span><span data-ng-show="!reverseSort">v</span></span>
+						</a>
+					</th>
+					<th>Action</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr data-ng-repeat="t in allTowns.towns">
+					<td>{{t.id}}</td>
+					<td>{{t.username}}</td>
+					<td><a href="/#/admin/towns/edit/{{t.id}}/{{t.username}}">edit</a> |
+						<a href="/#/admin/towns/delete/{{t.id}}/{{t.username}}">delete</a></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<pagination class="pagination" total-items="allTowns.numItems" items-per-page="itemsPerPage"
+	            data-numPages="allTowns.numPages"
+	            data-ng-model="currentPage" data-ng-change="pageChanged()"></pagination>
+</div>

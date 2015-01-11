@@ -1,0 +1,20 @@
+<div class="col-md-offset-2 col-md-8">
+	<div class="form-login panel panel-primary">
+		<div class="panel-heading">Add new category</div>
+		<div class="panel-body">
+			<div class="col-md-7 pull-left">
+				<label for="name">Name:</label>
+				<input type="text" id="name" data-ng-model="category.name" required="required"
+				       class="form-control input-sm chat-input"/>
+				<br/>
+				<div class="wrapper">
+		            <span class="group-btn">
+		                <a href="/#/" onclick="return false;" class="btn btn-primary btn-md"
+		                   data-ng-click="addCategoryNow(category)">Add</a>
+						<a href="/#/admin/categories/list" class="btn btn-secondary btn-md pull-right">Cancel</a>
+		            </span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

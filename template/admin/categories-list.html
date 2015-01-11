@@ -1,8 +1,8 @@
 <div class="col-md-10 col-md-offset-1 adslist bgloader">
 	<div class="form-login panel panel-primary">
 		<div class="panel-heading">
-			Browse Categories <a href="/#/admin/category/add" class="pull-right btn btn-info"
-			                     style="color:#FFF;top:-7px;position:relative;"> Add Category</a>
+			Browse Categories <a href="/#/admin/categories/add" class="pull-right btn btn-info"
+			                     style="color:#FFF;top:-7px;position:relative;"> Add Category </a>
 		</div>
 		<div class="panel-body">
 			<table class="table table-bordered">
@@ -19,11 +19,11 @@
 				</tr>
 				</thead>
 				<tbody>
-				<tr data-ng-repeat="c in allCategories.categories | orderBy:orderByField:reverseSort">
+				<tr data-ng-repeat="c in allCategories.categories">
 					<td>{{c.id}}</td>
 					<td>{{c.username}}</td>
-					<td><a href="/#/admin/categories/edit/{{c.id}}">edit</a> |
-						<a href="/#/admin/categories/delete/{{c.id}}">delete</a></td>
+					<td><a href="/#/admin/categories/edit/{{c.id}}/{{c.username}}">edit</a> |
+						<a href="/#/admin/categories/delete/{{c.id}}/{{c.username}}">delete</a></td>
 				</tr>
 				</tbody>
 			</table>

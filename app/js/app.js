@@ -56,6 +56,27 @@ appAngularJS.config(function ($routeProvider) {
 	}).when('/admin/categories/list', {
 		templateUrl: 'template/admin/categories-list.html',
 		controller: 'AdminCategoriesListController'
+	}).when('/admin/categories/add', {
+		templateUrl: 'template/admin/category-add.html',
+		controller: 'AdminCategoriesAddController'
+	}).when('/admin/categories/edit/:id/:name', {
+		templateUrl: 'template/admin/category-edit.html',
+		controller: 'AdminCategoriesEditController'
+	}).when('/admin/categories/delete/:id/:name', {
+		templateUrl: 'template/admin/category-delete.html',
+		controller: 'AdminCategoriesDeleteController'
+	}).when('/admin/towns/list', {
+		templateUrl: 'template/admin/towns-list.html',
+		controller: 'AdminTownsListController'
+	}).when('/admin/towns/add', {
+		templateUrl: 'template/admin/towns-add.html',
+		controller: 'AdminTownsAddController'
+	}).when('/admin/towns/edit/:id/:name', {
+		templateUrl: 'template/admin/towns-edit.html',
+		controller: 'AdminTownsEditController'
+	}).when('/admin/towns/delete/:id/:name', {
+		templateUrl: 'template/admin/towns-delete.html',
+		controller: 'AdminTownsDeleteController'
 	});
 
 	$routeProvider.otherwise({redirectTo: '/'});

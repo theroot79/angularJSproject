@@ -123,6 +123,76 @@ appAngularJS.factory('adminServices',['$http','baseServiceUrl','authService',
 			$http(request).success(success).error(error);
 		}
 
+		function addAdminCategory(categoryObj,success,error){
+			var request = {
+				method: 'POST',
+				url: baseServiceUrl + '/admin/Categories',
+				headers: authService.getAuthHeaders(),
+				data: categoryObj
+			};
+			return $http(request).success(success).error(error)
+		}
+
+		function editAdminCategory(categoryObj,success,error){
+			var request = {
+				method: 'POST',
+				url: baseServiceUrl + '/admin/Categories',
+				headers: authService.getAuthHeaders(),
+				data: categoryObj
+			};
+			return $http(request).success(success).error(error)
+		}
+
+		function deleteAdminCategory(categoryObj,success,error){
+			var request = {
+				method: 'DELETE',
+				url: baseServiceUrl + '/admin/Categories/'+categoryObj.id,
+				headers: authService.getAuthHeaders(),
+				data: {}
+			};
+			return $http(request).success(success).error(error)
+		}
+
+		function getAdminTowns(params,success,error){
+			var request = {
+				method: 'GET',
+				url: baseServiceUrl + '/admin/Towns',
+				headers: authService.getAuthHeaders(),
+				params: params
+			};
+			$http(request).success(success).error(error);
+		}
+
+		function addAdminTown(categoryObj,success,error){
+			var request = {
+				method: 'POST',
+				url: baseServiceUrl + '/admin/Towns',
+				headers: authService.getAuthHeaders(),
+				data: categoryObj
+			};
+			return $http(request).success(success).error(error)
+		}
+
+		function editAdminTowns(townObj,success,error){
+			var request = {
+				method: 'PUT',
+				url: baseServiceUrl + '/admin/Towns/'+townObj.id,
+				headers: authService.getAuthHeaders(),
+				data: townObj
+			};
+			return $http(request).success(success).error(error)
+		}
+
+		function deleteAdminTown(townObj,success,error){
+			var request = {
+				method: 'DELETE',
+				url: baseServiceUrl + '/admin/Towns/'+townObj.id,
+				headers: authService.getAuthHeaders(),
+				data: {}
+			};
+			return $http(request).success(success).error(error)
+		}
+
 		return {
 			getAdminAds:getAdminAds,
 			getAdminAdById:getAdminAdById,
@@ -135,7 +205,14 @@ appAngularJS.factory('adminServices',['$http','baseServiceUrl','authService',
 			updateUserInfo:updateUserInfo,
 			updateUserPass:updateUserPass,
 			deleteUser:deleteUser,
-			getAdminCategories:getAdminCategories
+			getAdminCategories:getAdminCategories,
+			addAdminCategory:addAdminCategory,
+			editAdminCategory:editAdminCategory,
+			deleteAdminCategory:deleteAdminCategory,
+			getAdminTowns:getAdminTowns,
+			addAdminTown:addAdminTown,
+			editAdminTowns:editAdminTowns,
+			deleteAdminTown:deleteAdminTown
 		}
 	}
 ]);
