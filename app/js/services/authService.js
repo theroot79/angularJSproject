@@ -36,6 +36,7 @@ appAngularJS.factory('authService',['$http','$resource','baseServiceUrl','localS
 			var uObjData = angular.fromJson(uData);
 			return uObjData;
 		}
+
 		function getAuthHeadersFnc(){
 			var headers = {};
 			var userData = getCurrentUserInfo();
@@ -52,9 +53,8 @@ appAngularJS.factory('authService',['$http','$resource','baseServiceUrl','localS
 
 			var userData = getCurrentUserInfo();
 			if(userData) {
-				isAdmin = userData.is_admin;
+				isAdmin = userData.isAdmin;
 			}
-			console.log(userData);
 			return isAdmin;
 		}
 
@@ -73,15 +73,15 @@ appAngularJS.factory('authService',['$http','$resource','baseServiceUrl','localS
 		}
 
 		return {
-			login: loginUser,
-			register: registerUser,
+			login:loginUser,
+			register:registerUser,
 			logout:logoutUser,
-			getCurrentUser :getCurrentUserInfo(),
+			getCurrentUser:getCurrentUserInfo(),
 			isAnonymous:isAnonymouse,
 			isNormalUser:isNormalUser,
-			isAdmin :isAdmin,
-			getAuthHeaders : getAuthHeadersFnc,
-			isLoggedIn : function() {
+			isAdmin:isAdmin,
+			getAuthHeaders:getAuthHeadersFnc,
+			isLoggedIn:function(){
 				return !!getCurrentUserInfo();
 			}
 		}

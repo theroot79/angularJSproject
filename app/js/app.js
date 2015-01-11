@@ -11,61 +11,60 @@ appAngularJS.config(function ($routeProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'template/home.html',
 		controller: 'HomeController'
-	});
-
-	$routeProvider.when('/login', {
+	}).when('/login', {
 		templateUrl: 'template/login.html',
 		controller: 'LoginController'
-	});
-
-	$routeProvider.when('/register', {
+	}).when('/register', {
 		templateUrl: 'template/register.html',
 		controller: 'RegisterController'
-	});
-	$routeProvider.when('/user/ads/publish', {
+	}).when('/user/ads/publish', {
 		templateUrl: 'template/user/publish-new-ad.html',
 		controller: 'UserPublishNewAdController'
-	});
-	$routeProvider.when('/user/ads', {
+	}).when('/user/ads', {
 		templateUrl: 'template/user/list-ads.html',
 		controller: 'UserListAdsController'
-	});
-	$routeProvider.when('/user/ads/edit/:adId', {
+	}).when('/user/ads/edit/:adId', {
 		templateUrl: 'template/user/edit-ad.html',
 		controller: 'UserEditAdController'
-	});
-	$routeProvider.when('/user/ads/del/:adId', {
+	}).when('/user/ads/del/:adId', {
 		templateUrl: 'template/user/del-ad.html',
 		controller: 'UserDelAdController'
-	});
-	$routeProvider.when('/user/profile/edit', {
+	}).when('/user/profile/edit', {
 		templateUrl: 'template/user/edit-user-profile.html',
 		controller: 'UserEditProfileController'
-	});
-
-	$routeProvider.when('/logout', {
+	}).when('/logout', {
 		template: '',
 		controller: 'LogoutController'
+	}).when('/admin/ads', {
+		templateUrl: 'template/admin/ads.html',
+		controller: 'AdminListAdsController'
+	}).when('/admin/ads/edit/:adId', {
+		templateUrl: 'template/admin/edit-ad.html',
+		controller: 'AdminEditAdController'
 	});
 
 	$routeProvider.otherwise({redirectTo: '/'});
 
 });
 
+
+/**
+ * Implementation for check if the User is logged in
+ * or/and is Admin
+ */
 appAngularJS.run(function($rootScope, $location, authService){
 	$rootScope.$on('$locationChangeStart',function(event){
 		if($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()){
 			$location.path("/");
 		}
-		$rootScope.isLoggedIn = Boolean(authService.isLoggedIn());
+		if($location.path().indexOf("/admin/") != -1 && !authService.isAdmin()){
+			$location.path("/");
+		}
 	});
 	$rootScope.homePage = function(){
 		location.reload();
 	};
-
 });
-
-
 
 
 /**

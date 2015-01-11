@@ -1,14 +1,14 @@
 'use strict';
 
-appAngularJS.controller('UserEditAdController',['$scope','$location','$routeParams','townsService','categoriesService','userServices','notifyService',
-	function ($scope, $location, $routeParams, townsService, categoriesService, userServices, notifyService) {
-		$scope.adData = {title:'', townId: null, categoryId: null};
+appAngularJS.controller('AdminEditAdController',['$scope','$location','$routeParams','townsService','categoriesService','adminServices','notifyService',
+	function ($scope, $location, $routeParams, townsService, categoriesService, adminServices, notifyService) {
+		$scope.adData = {title:'', townId: null, categoryId: null, changeimage: false};
 		var adId = $routeParams.adId;
 		$scope.adNum = adId;
 		$scope.publicCategories = categoriesService.getCategories();
 		$scope.publicTowns = townsService.getAllTowns();
 
-		userServices.getUserAdById(adId,
+		adminServices.getAdminAdById(adId,
 			function success(resp){
 				if(typeof resp == "object"){
 					$scope.adData = resp;
@@ -28,10 +28,10 @@ appAngularJS.controller('UserEditAdController',['$scope','$location','$routePara
 		};
 
 		$scope.updateAd = function(adData) {
-			userServices.editUserAd(adData,
+			adminServices.editAdminAd(adData,
 				function success(){
 					notifyService.showInfo("<br /><p>Ad Updated Successfuly!<br /></p>");
-					$location.path("/user/ads");
+					$location.path("/admin/ads");
 				},
 				function error(err){
 					var errStr = "";
@@ -54,6 +54,7 @@ appAngularJS.controller('UserEditAdController',['$scope','$location','$routePara
 				var reader = new FileReader();
 				reader.onload = function() {
 					$scope.adData.imageDataUrl = reader.result;
+					$scope.adData.changeimage = true;
 					$(".image-box").html("<img src='" + reader.result + "'>");
 				};
 				reader.readAsDataURL(file);

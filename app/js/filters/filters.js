@@ -3,19 +3,18 @@ appAngularJS.factory('filters',
 		var filterParams = {};
 
 		function filterByCategory(categoryObj){
-			if(filterParams.categoryId != categoryObj.id){
-				filterParams.categoryId = categoryObj.id;
-			}else{
+			if(categoryObj == 0){
 				delete filterParams.categoryId;
+			}else{
+				filterParams.categoryId = categoryObj.id;
 			}
-
 		}
 
 		function filterByTown(townObj){
-			if(filterParams.townId != townObj.id) {
-				filterParams.townId = townObj.id;
-			}else{
+			if(townObj == 0){
 				delete filterParams.townId;
+			}else{
+				filterParams.townId = townObj.id;
 			}
 		}
 
@@ -29,7 +28,7 @@ appAngularJS.factory('filters',
 		}
 
 		function setStatus(statusStr){
-			if(statusStr == "0"){
+			if(statusStr == 0){
 				delete filterParams.status;
 			}else{
 				filterParams.status = statusStr;

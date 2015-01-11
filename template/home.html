@@ -3,6 +3,9 @@
 	<div class="panel panel-default col-md-12">
 		<h4 class="panel-heading">Categories</h4>
 		<ul class="panel-body">
+			<li class="list-group-item">
+				<a href="#" onclick="return false;" data-ng-click="categoryClicked(0)">All</a>
+			</li>
 			<li class="list-group-item" ng-repeat="c in publicCategories">
 				<a href="#" onclick="return false;" data-ng-click="categoryClicked(c)">{{c.name}}</a>
 			</li>
@@ -12,6 +15,9 @@
 	<div class="panel panel-default col-md-12">
 		<h4 class="panel-heading">Towns</h4>
 		<ul class="panel-body" >
+			<li class="list-group-item">
+				<a href="#" onclick="return false;" data-ng-click="townClicked(0)">All</a>
+			</li>
 			<li class="list-group-item" ng-repeat="t in publicTowns">
 				<a href="#" onclick="return false;" data-ng-click="townClicked(t)">{{t.name}}</a>
 			</li>

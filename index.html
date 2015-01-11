@@ -23,10 +23,7 @@
 				<a class="navbar-brand main-logo" href="/#/" ng-click="homePage()"><img src="app/img/logo.png" alt="Logo" /></a>
 
 			</div>
-			<div id="navbar" class="navbar-collapse collapse"
-			     data-ng-include="'template/partial/menu-loggedIn.html'" data-ng-if="isLoggedIn" ></div>
-			<div id="navbar2" class="navbar-collapse collapse"
-			     data-ng-include="'template/partial/menu-notLoggedIn.html'" data-ng-if="!isLoggedIn"></div>
+			<div id="navbar" class="navbar-collapse collapse" data-ng-include="getPartialHtmls()"></div>
 		</div>
 	</nav>
 </header>
@@ -53,14 +50,17 @@
 <script src="app/lib/jquery.noty/jquery.noty.packaged.min.js"></script>
 <script src="app/lib/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
 
+<!-- Main Application Init -->
 <script src="app/js/app.js"></script>
 
+<!-- Services -->
 <script src="app/js/services/notifyService.js"></script>
 <script src="app/js/services/adsServices.js"></script>
 <script src="app/js/services/data/townService.js"></script>
 <script src="app/js/services/data/categoriesService.js"></script>
 <script src="app/js/services/authService.js"></script>
 <script src="app/js/services/userServices.js"></script>
+<script src="app/js/services/adminServices.js"></script>
 
 <!-- Filters -->
 <script src="app/js/filters/filters.js"></script>
@@ -77,8 +77,10 @@
 <script src="app/js/controllers/UserDelAdController.js"></script>
 <script src="app/js/controllers/UserEditProfileController.js"></script>
 
-<!-- End of JavaScript Includes -->
+<script src="app/js/controllers/AdminListAdsController.js"></script>
+<script src="app/js/controllers/AdminEditAdController.js"></script>
 
+<!-- End of JavaScript Includes -->
 
 </body>
 </html>
