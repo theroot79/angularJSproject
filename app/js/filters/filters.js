@@ -35,12 +35,21 @@ appAngularJS.factory('filters',
 			}
 		}
 
+		function sortBy(sortByStr){
+			if(filterParams.sortBy && (filterParams.sortBy == sortByStr)){
+				filterParams.sortBy = '-'+sortByStr;
+			}else{
+				filterParams.sortBy = sortByStr;
+			}
+		}
+
 		return {
 			filterByCategory: filterByCategory,
 			filterByTown: filterByTown,
 			getParams: getFilterParams,
 			setPage: setPage,
-			setStatus: setStatus
+			setStatus: setStatus,
+			sortBy: sortBy
 		}
 	}
 );

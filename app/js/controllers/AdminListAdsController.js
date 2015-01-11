@@ -47,27 +47,27 @@ appAngularJS.controller('AdminListAdsController',['$scope','$location','adminSer
 			loadAdminAds(filters.getParams());
 		};
 
-		$scope.deactivateAd = function(adId){
-			userServices.deactivateAd(adId,
+		$scope.RejectAd = function(adId){
+			adminServices.rejectAd(adId,
 				function success(){
-					notifyService.showInfo("<br /><p>Ad Deactivated Successfuly!<br /></p>");
+					notifyService.showInfo("<br /><p>Ad Rejected Successfuly!<br /></p>");
 					loadAdminAds(filters.getParams());
 				},
 				function error(err){
 					var errTxt = '<br /><p>'+String(err.message)+'</p>';
-					notifyService.showError("<br/><p>Failed to deactivate Ad!</p><br/>"+errTxt,err);
+					notifyService.showError("<br/><p>Failed to Rejected Ad!</p><br/>"+errTxt,err);
 				});
 		};
 
-		$scope.publishAgaineAd = function(adId){
-			userServices.publishAgainAd(adId,
+		$scope.ApproveAd = function(adId){
+			adminServices.approveAd(adId,
 				function success(){
-					notifyService.showInfo("<br /><p>Ad Published Successfuly!<br /></p>");
+					notifyService.showInfo("<br /><p>Ad Approved Successfuly!<br /></p>");
 					loadAdminAds(filters.getParams());
 				},
 				function error(err){
 					var errTxt = '<br /><p>'+String(err.message)+'</p>';
-					notifyService.showError("<br/><p>Failed to publish Ad!</p><br/>"+errTxt,err);
+					notifyService.showError("<br/><p>Failed to Approved Ad!</p><br/>"+errTxt,err);
 				});
 		};
 

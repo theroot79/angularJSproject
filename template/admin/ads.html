@@ -66,11 +66,13 @@
 							   class="btn btn-success btn-md">Approve</a>
 						</span>
 	                    <span ng-show="ad.status != 'Inactive'">
-							<a href="#" onclick="return false" ng-click="RejectAd(ad.id)"
-							   class="btn btn-success btn-md">Reject</a>
+		                    <span ng-show="ad.status != 'Rejected'">
+								<a href="#" onclick="return false" ng-click="RejectAd(ad.id)"
+							    class="btn btn-success btn-md">Reject</a>
+		                    </span>
 	                    </span>
 						<a href="#/admin/ads/edit/{{ad.id}}" class="btn btn-primary btn-md">Edit</a>
-						<a href="#/admin/ads/del/{{ad.id}}" class="btn btn-danger btn-md">Delete</a>
+						<a href="#/admin/ads/delete/{{ad.id}}" class="btn btn-danger btn-md">Delete</a>
 					</div>
 				</div>
 

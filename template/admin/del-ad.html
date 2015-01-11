@@ -1,0 +1,30 @@
+<div class="col-md-offset-2 col-md-8">
+	<div class="form-login panel panel-primary">
+		<div class="panel-heading">Confirm Delete Ad #{{adNum}}</div>
+		<div class="panel-body">
+			<div class="col-md-7 pull-left">
+				<label class="col-md-3 pull-left">Title:</label> {{adData.title}}
+				<br/><br/>
+				<label class="col-md-3 pull-left">Text:</label> {{adData.text}}
+			</div>
+			<div class="col-md-4 pull-right image-box"><img src="{{adData.imageDataUrl}}" alt="No Image Yet"/></div>
+			<div class="col-md-12">
+				<p><label class="col-md-3 pull-left">Category:</label> {{adData.categoryName}}</p>
+				<p><label class="col-md-3 pull-left">Town:</label> {{adData.townName}}</p>
+				<p><label class="col-md-3 pull-left">Username:</label> {{adData.ownerUsername}}</p>
+				<p><label class="col-md-3 pull-left">Email:</label>
+					<a href="mailto:{{adData.ownerEmail}}" target="_blank">{{adData.ownerEmail}}</a>
+				</p>
+				<p><label class="col-md-3 pull-left">Tel:</label> {{adData.ownerPhone}}</p>
+				<p>
+					<div class="wrapper">
+		                <span class="group-btn"><br/><br/>
+						<a ng-click="deleteAd(adData.id)" class="btn btn-danger btn-md">Delete Now!</a>
+						<a href="#/admin/ads" class="btn btn-secondary btn-md pull-right">Cancel</a>
+		                </span>
+					</div>
+				<p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -33,10 +33,54 @@ appAngularJS.factory('adminServices',['$http','baseServiceUrl','authService',
 			return $http(request).success(success).error(error)
 		}
 
+		function delAdminAd(adId,success,error){
+			var request = {
+				method: 'DELETE',
+				url: baseServiceUrl + '/admin/ads/'+adId,
+				headers: authService.getAuthHeaders(),
+				data: {}
+			};
+			return $http(request).success(success).error(error)
+		}
+
+		function approveAd(adId,success,error){
+			var request = {
+				method: 'PUT',
+				url: baseServiceUrl + '/admin/ads/approve/'+adId,
+				headers: authService.getAuthHeaders(),
+				params: {}
+			};
+			return $http(request).success(success).error(error)
+		}
+
+		function rejectAd(adId,success,error){
+			var request = {
+				method: 'PUT',
+				url: baseServiceUrl + '/admin/ads/reject/'+adId,
+				headers: authService.getAuthHeaders(),
+				params: {}
+			};
+			return $http(request).success(success).error(error)
+		}
+
+		function getAdminCategories(params,success,error){
+			var request = {
+				method: 'GET',
+				url: baseServiceUrl + '/admin/categories',
+				headers: authService.getAuthHeaders(),
+				params: params
+			};
+			$http(request).success(success).error(error);
+		}
+
 		return {
 			getAdminAds:getAdminAds,
 			getAdminAdById:getAdminAdById,
-			editAdminAd:editAdminAd
+			editAdminAd:editAdminAd,
+			delAdminAd:delAdminAd,
+			approveAd:approveAd,
+			rejectAd:rejectAd,
+			getAdminCategories:getAdminCategories
 		}
 	}
 ]);

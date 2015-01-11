@@ -1,6 +1,6 @@
 'use strict';
 
-var appAngularJS = angular.module('appAngularJS',['ngRoute','ngResource','LocalStorageModule','ui.bootstrap.pagination']);
+var appAngularJS = angular.module('appAngularJS',['ngRoute','ngResource','LocalStorageModule','ui.bootstrap']);
 
 //appAngularJS.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api');
 appAngularJS.constant('baseServiceUrl', 'http://localhost:1337/api');
@@ -41,6 +41,15 @@ appAngularJS.config(function ($routeProvider) {
 	}).when('/admin/ads/edit/:adId', {
 		templateUrl: 'template/admin/edit-ad.html',
 		controller: 'AdminEditAdController'
+	}).when('/admin/ads/delete/:adId', {
+		templateUrl: 'template/admin/del-ad.html',
+		controller: 'AdminDelAdController'
+	}).when('/admin/users/list', {
+		templateUrl: 'template/admin/users-list.html',
+		controller: 'AdminUsersListController'
+	}).when('/admin/categories/list', {
+		templateUrl: 'template/admin/categories-list.html',
+		controller: 'AdminCategoriesListController'
 	});
 
 	$routeProvider.otherwise({redirectTo: '/'});

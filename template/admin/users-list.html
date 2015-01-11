@@ -1,0 +1,31 @@
+<div class="col-md-10 col-md-offset-1 adslist bgloader">
+	<div class="form-login panel panel-primary">
+		<div class="panel-heading">Browse Users</div>
+		<div class="panel-body">
+			<table class="table table-bordered">
+				<thead>
+				<tr>
+					<th>ID</th>
+					<th>
+						<a href="#" onclick="return false;"
+						   ng-click="sortBy('Name')">Category
+							 <span ng-show="reverseSort">^</span><span ng-show="!reverseSort">v</span></span>
+						</a>
+					</th>
+					<th>Action</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="c in allCategories.categories | orderBy:orderByField:reverseSort">
+					<td>{{c.id}}</td>
+					<td>{{c.username}}</td>
+					<td><a href="/#/admin/categories/list">edit</a> | <a href="/#/admin/categories/list">del</a></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<pagination class="pagination" total-items="allCategories.numItems" items-per-page="itemsPerPage"
+	            data-numPages="allCategories.numPages"
+	            ng-model="currentPage" ng-change="pageChanged()"></pagination>
+</div>
