@@ -2,8 +2,8 @@
 
 var appAngularJS = angular.module('appAngularJS',['ngRoute','ngResource','LocalStorageModule','ui.bootstrap']);
 
-//appAngularJS.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api');
-appAngularJS.constant('baseServiceUrl', 'http://localhost:1337/api');
+appAngularJS.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api');
+//appAngularJS.constant('baseServiceUrl', 'http://localhost:1337/api');
 appAngularJS.constant('PAGESIZE',5);
 
 appAngularJS.config(function ($routeProvider) {
@@ -89,7 +89,7 @@ appAngularJS.config(function ($routeProvider) {
  * or/and is Admin
  */
 appAngularJS.run(function($rootScope, $location, authService){
-	$rootScope.$on('$locationChangeStart',function(event){
+	$rootScope.$on('$locationChangeStart',function(){
 		if($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()){
 			$location.path("/");
 		}
@@ -98,14 +98,13 @@ appAngularJS.run(function($rootScope, $location, authService){
 		}
 	});
 	$rootScope.homePage = function(){
-		location.reload();
+		$location.path("/");
 	};
 });
 
 
 /**
  * LocalStorage settings.
- * @type {Function|publishExternalAPI.isDefined|*}
  */
 var isDefined = angular.isDefined,
 	isUndefined = angular.isUndefined,
