@@ -28,6 +28,7 @@ appAngularJS.controller('AdminUsersEditController',['$scope','$location','$route
 		$scope.updateUserInfoNow = function (userData) {
 			adminServices.updateUserInfo(userData,function() {
 					notifyService.showInfo("Profile Updated Successfuly !");
+					$location.path('/admin/users/list')
 				},
 				function error(err) {
 					var errStr = "";
