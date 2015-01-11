@@ -7,8 +7,13 @@ body{
 	margin-top:80px;
 	margin-bottom:60px;
 }
-.header{
 
+form input.ng-invalid.ng-dirty {
+	background-color: #FA787E;
+}
+
+form input.ng-valid.ng-dirty {
+	background-color: #78FA89;
 }
 
 .main-logo{
@@ -106,4 +111,15 @@ body{
 .image-box img{
 	display:block;
 	max-width:100%;
+}
+
+
+.dtpicker .dropdown-menu {
+	left: auto !important;
+	right: 0px;
+	padding-left:5px;
+	padding-right:5px;
+	top:auto;
+	bottom:0;
+	margin-top:-300px;
 }

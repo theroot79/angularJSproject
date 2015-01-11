@@ -3,26 +3,26 @@
 		<div class="form-login panel panel-primary">
 			<div class="panel-heading">Register now</div>
 			<div class="panel-body">
-				<form method="post" action="/#/register">
+				<form name="regForm">
 					<label for="username">Username:</label>
 					<input type="text" id="username" class="form-control input-sm chat-input"
-							ng-model="user.username" ng-required=""/>
+							ng-model="user.username" ng-required="" required="required" minlength="5"/>
 					</br>
 					<label for="password">Password:</label>
 					<input type="password" id="password" class="form-control input-sm chat-input"
-					       ng-model="user.password"/>
+					       ng-model="user.password" ng-required="" required="required" minlength="4"/>
 					</br>
 					<label for="confirmPassword">Confirm Password:</label>
 					<input type="password" id="confirmPassword" class="form-control input-sm chat-input"
-					       ng-model="user.confirmPassword"/>
+					       ng-model="user.confirmPassword" ng-required="" required="required" minlength="4"/>
 					</br>
 					<label for="name">Name:</label>
 					<input type="text" id="name" class="form-control input-sm chat-input"
-							ng-model="user.name"/>
+							ng-model="user.name" ng-required="" required="required" minlength="6"/>
 					</br>
 					<label for="email">Email:</label>
 					<input type="email" id="email" class="form-control input-sm chat-input"
-					       ng-model="user.email"/>
+					       ng-model="user.email" ng-required="" required="required" minlength="10"/>
 					</br>
 					<label for="phone">Phone:</label>
 					<input type="tel" id="phone" class="form-control input-sm chat-input"
@@ -34,13 +34,11 @@
 						<option ng-repeat="t in towns" value="{{t.id}}">{{t.name}}</option>
 					</select>
 					</br>
-					<div class="wrapper">
 		            <span class="group-btn">
-		                <a href="/#/register" class="btn btn-primary btn-md" ng-click="registerNow(user)">
-			                Register</a>
+		                <button class="btn btn-primary btn-md" ng-click="registerNow(user)" type="submit">Register
+		                </button>
 						<a href="/#/login" class="btn btn-secondary btn-md pull-right">Login</a>
 		            </span>
-					</div>
 				</form>
 			</div>
 		</div>

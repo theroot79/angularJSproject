@@ -1,21 +1,24 @@
 <div class="row">
 	<div class="col-md-offset-4 col-md-6">
+
 		<div class="form-login panel panel-primary">
 			<div class="panel-heading">Login</div>
 			<div class="panel-body">
-				<label for="username">Username:</label>
-				<input type="text" id="username" class="form-control input-sm chat-input"
-				       ng-model="user.username"/>
-				</br>
-				<label for="password">Password:</label>
-				<input type="password" id="password" class="form-control input-sm chat-input"
-				       ng-model="user.password"/>
-				</br>
-				<div class="wrapper">
-	            <span class="group-btn">
-	                <a href="#" class="btn btn-primary btn-md" ng-click="loginNow(user)">Login</a>
-	            </span>
-				</div>
+				<form name="someName">
+					<label for="username">Username:</label>
+					<input type="text" id="username" class="form-control input-sm chat-input"
+					       ng-model="user.username" required="required" minlength="3"/>
+					</br>
+					<label for="password">Password:</label>
+					<input type="password" id="password" class="form-control input-sm chat-input"
+					       ng-model="user.password" ng-required="" required="required" minlength="3"/>
+					</br>
+					<div class="wrapper">
+		            <span class="group-btn">
+		                <button type="submit" class="btn btn-primary btn-md" ng-click="loginNow(user)">Login</button>
+		            </span>
+					</div>
+				</form>
 			</div>
 		</div>
 
