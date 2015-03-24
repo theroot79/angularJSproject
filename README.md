@@ -2,4 +2,4 @@
 
 SPA AngularJS application based on SoftUni requirements.
 
-Live project demo on: <a href="http://ads.cincev.com" target="_blank">http://ads.cincev.com</a>
+Live project demo on: <a href="http://ads.cincev.com/index.html" target="_blank">http://ads.cincev.com/index.html</a>
