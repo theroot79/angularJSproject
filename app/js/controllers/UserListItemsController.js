@@ -8,11 +8,11 @@ appAngularJS.controller('UserListAdsController',['$scope','$location','userServi
 		$scope.itemsPerPage = PAGESIZE;
 
 		function loadUserAds(params){
-			jQuery('.adslist').addClass('bgloader');
+			jQuery('.itemslist').addClass('bgloader');
 			var paramsSend = params || {};
 			userServices.getUserAds(paramsSend,function (resp) {
 				$scope.allPublicAds = resp;
-				jQuery('.adslist').removeClass('bgloader');
+				jQuery('.itemslist').removeClass('bgloader');
 			});
 		}
 
@@ -52,6 +52,5 @@ appAngularJS.controller('UserListAdsController',['$scope','$location','userServi
 					notifyService.showError("<br/><p>Failed to publish Ad!</p><br/>"+errTxt,err);
 				});
 		};
-
 	}
 ]);
